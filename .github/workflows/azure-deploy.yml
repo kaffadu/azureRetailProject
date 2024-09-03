@@ -252,7 +252,7 @@ jobs:
 
       - name: Import Existing ACR
         run: |
-          terraform import azurerm_container_registry.acr /subscriptions/${{ secrets.AZURE_SUBSCRIPTION_ID }}/resourceGroups/microservices-demo-rg/providers/Microsoft.ContainerRegistry/registries/skilltechregistry || true
+          terraform import azurerm_container_registry.acr /subscriptions/${{ secrets.AZURE_SUBSCRIPTION_ID }}/resourceGroups/microservices-demo-rg/providers/Microsoft.ContainerRegistry/registries/premierhubtech || true
         working-directory: deployment/terraform/aks
 
       - name: Import Existing AKS
