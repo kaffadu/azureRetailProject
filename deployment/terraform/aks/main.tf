@@ -31,3 +31,19 @@ resource "azurerm_kubernetes_cluster" "aks" {
         type = "SystemAssigned"
     }
 }
+
+
+# Try to give permissions, to let the AKR access the ACR
+
+# Data block to reference an existing service principal by name
+data "azuread_service_principal" "github-actions-sp" {
+    display_name = "github-actions-sp"
+}
+
+# Assign the AcrPull role to the existing service principal 'github-actions-sp'
+resource "azurerm_role_assignment" "acrpull_role" {
+    scope                = azurerm_container_registry.acr.id
+    role_definition_name = "AcrPull"
+    principal_id         = data.azuread_service_principal.github-actions-sp.object_id
+    skip_service_principal_aad_check = true
+}
