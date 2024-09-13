@@ -50,23 +50,23 @@ resource "azurerm_role_assignment" "acrpull_role" {
 
 
 
-# Data block to reference the subscription
-data "azurerm_subscription" "primary" {}
-
-# Grant the Owner role to the service principal at the subscription level
-resource "azurerm_role_assignment" "sp_owner" {
-    principal_id         = "561c1289-280d-4344-9eeb-79d032074744"  # Service principal object ID
-    role_definition_name = "Owner"
-    scope                = data.azurerm_subscription.primary.id
-}
-
-
 # # Data block to reference the subscription
 # data "azurerm_subscription" "primary" {}
 
-# # Grant the User Access Administrator role to the service principal at the subscription level
-# resource "azurerm_role_assignment" "sp_user_access_admin" {
-#   principal_id         = "561c1289-280d-4344-9eeb-79d032074744"  # Service principal object ID
-#   role_definition_name = "User Access Administrator"
-#   scope                = data.azurerm_subscription.primary.id
+# # Grant the Owner role to the service principal at the subscription level
+# resource "azurerm_role_assignment" "sp_owner" {
+#     principal_id         = "561c1289-280d-4344-9eeb-79d032074744"  # Service principal object ID
+#     role_definition_name = "Owner"
+#     scope                = data.azurerm_subscription.primary.id
 # }
+
+
+# # # Data block to reference the subscription
+# # data "azurerm_subscription" "primary" {}
+
+# # # Grant the User Access Administrator role to the service principal at the subscription level
+# # resource "azurerm_role_assignment" "sp_user_access_admin" {
+# #   principal_id         = "561c1289-280d-4344-9eeb-79d032074744"  # Service principal object ID
+# #   role_definition_name = "User Access Administrator"
+# #   scope                = data.azurerm_subscription.primary.id
+# # }
